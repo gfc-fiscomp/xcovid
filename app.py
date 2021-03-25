@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import time
+import base64
 st.set_page_config(page_title="GFC-FiscomP", page_icon="💻️", layout="centered")
 #PAGE_CONFIG = {"apge_title":"TesteGFC", "page_icon":"smiley", "layuot":"centered"}
 st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -15,7 +16,23 @@ def main():
 	if choice == "Página Inicial":
 		st.title("Página Inicial:")
 		st.header("WebApp criado para o primeiro SCITEK + Datathon 2021")
-		st.subheader("Navegue pelas abas na seção à esquerda.")
+		st.subheader("Projeto de diagnóstico de COVID-19 atráves de Raio-X Pulmonar usando Redes Neurais Convolucionais.")
+		st.button("Navegue pelas abas na seção à esquerda.")
+		#logo = Image.open("/home/mgteus/Datathon/xcovid/logoGFCNormal.png")
+		#st.image(logo, width=120)
+		st.text("")
+		st.text("")
+		st.text("")
+		st.text("Oferecimento:")
+		col1, col2 = st.beta_columns(2)
+		#col1.markdown("![LogoGIF](https://media.giphy.com/media/4MXP8s6bSQC9LmMwme/giphy.gif)")
+		col1.image("https://media.giphy.com/media/4MXP8s6bSQC9LmMwme/giphy.gif", width=300, caption="Ref:https://media.giphy.com/media/4MXP8s6bSQC9LmMwme/giphy.gif" )
+		col2.markdown("**IMAGEM POATEK SCITEK DATATHON SEI LA**")
+
+		
+		
+		
+		
 
 	elif choice == "Teste":
 		st.title("Classificação de imagens usando Redes Neurais Convolucionais")
@@ -42,10 +59,16 @@ def main():
 		
 	elif choice == "Sobre":
 		st.title("Sobre:")
-		st.header("Conheça o GFC")
+		st.header("Conheça o GFC:")
+		st.subheader("Grupo de Física Computacional é um grupo de alunos de graduação em Física interessados na área de Física Computacional. Desenvolvem projetos, participam de competições e se reunem semanalmente para discutir pesquisas e artigos.")
 		c1, c2 = st.beta_columns(2)
-		c1.write("Email")
-		c2.info("GitHub")
+		c1.subheader("GitHub: ")
+		c1.markdown("Todos os arquivos usados no classificador quanto na produção e deploy do projeto estão disponíveis no nosso github.")
+		c1.info("https://github.com/gfc-fiscomp/xcovid")
+		
+		c2.subheader("Email")
+		c2.markdown("Não hesite em mandar um email caso tenha alguma dúvida.")
+		c2.info("gfc.fiscomp@gmail.com")
 		
 		
 	contact = ["Email", "GitHub"]
