@@ -1,6 +1,6 @@
 # **xcovid**
 
-In this project we created a transfer learning based COVID-19 lung x-ray classifier WebApp for the Scitek Datathon!
+In this project we created a transfer learning based COVID-19 lung x-ray classifier WebApp for the (Scitek - POATEK Datathon)[https://poatek.com/scitek/]!
 
 In order to run it, just follow these instructions:
 1. Clone the repository with `git clone https://github.com/gfc-fiscomp/xcovid.git`.
