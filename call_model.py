@@ -43,8 +43,3 @@ def predict(image_path, save_path):
     m = {0: 'COVID-19 Negativo', 1: 'COVID-19 Positivo'}
 
     return (m[preds.item()], prob[preds.item()].item())
-
- def dummy(n):
-     for i in range(n):
-         print("oi eu sou uma função importada")
-    return 0

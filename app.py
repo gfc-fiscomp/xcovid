@@ -4,7 +4,7 @@ import time
 import base64
 import pandas as pd
 import numpy as np
-from call_model import predict, dummy
+from call_model import predict
 st.set_page_config(page_title="GFC-FiscomP", page_icon="💻️", layout="centered")
 #PAGE_CONFIG = {"apge_title":"TesteGFC", "page_icon":"smiley", "layuot":"centered"}
 st.set_option('deprecation.showfileUploaderEncoding', False)
