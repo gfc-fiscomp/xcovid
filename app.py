@@ -3,8 +3,8 @@ from PIL import Image
 import time
 import base64
 import pandas as pd
-import numpy as np 
-#from call_model import predict
+import numpy as np
+from call_model import predict, dummy
 st.set_page_config(page_title="GFC-FiscomP", page_icon="💻️", layout="centered")
 #PAGE_CONFIG = {"apge_title":"TesteGFC", "page_icon":"smiley", "layuot":"centered"}
 st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -33,10 +33,10 @@ def main():
 		col2.image("https://raw.githubusercontent.com/gfc-fiscomp/xcovid/main/scitekPoatek.png", caption="Fonte:https://poatek.com/scitek/", width=300)
 		#col2.markdown("![LogoScitek](https://github.com/gfc-fiscomp/xcovid/blob/main/scitekPoatek.png)")
 
-		
-		
-		
-		
+
+
+
+
 
 	elif choice == "Teste":
 		st.title("Classificação de imagens usando Redes Neurais Convolucionais")
@@ -55,20 +55,24 @@ def main():
 				bar.progress(i+1)
 				time.sleep(0.05)
 			x = st.number_input("Digite aqui:", -1,1)
-			#x = predict(fueto)[0]
+			x2 = predict(fueto)[0]
 			if x == -1:
 				st.markdown("**Calculando**")
 			elif x == 0:
 				st.success("COVID-19 Negativo")
 			else:
 				st.warning("COVID-19 Positivo")
-			
-			
-				
-			
-		else: 
+
+			y = dummy(4)
+			if y == 0:
+				st.write("A função devolveu 0")
+
+
+
+
+		else:
 			st.warning("Exame não enviado.")
-		
+
 	elif choice == "Sobre":
 		st.title("Sobre:")
 		st.header("Conheça o GFC:")
@@ -77,12 +81,12 @@ def main():
 		c1.subheader("GitHub: ")
 		c1.markdown("Todos os arquivos usados no classificador quanto na produção e deploy do projeto estão disponíveis no nosso github.")
 		c1.info("https://github.com/gfc-fiscomp/xcovid")
-		
+
 		c2.subheader("Email")
 		c2.markdown("Não hesite em mandar um email caso tenha alguma dúvida.")
 		c2.info("gfc.fiscomp@gmail.com")
-		
-		
+
+
 	contact = ["Email", "GitHub"]
 	#choice2 = st.sidebar.selectbox("Contato", contact)
 	#if choice2 == "Email":
@@ -93,7 +97,7 @@ def main():
 #		st.title("GitHub:")
 #		st.header("https://github.com/gfc-fiscomp/xcovid")
 #		st.subheader("Todos os arquivos usados no classificador quanto na produção e deploy do projeto estão disponíveis no nosso github.")
-		
+
 
 
 
@@ -108,5 +112,3 @@ if __name__ == '__main__':
 	#	latest_it.text(f'Etapa {i+1}/{100}')
 	#	bar.progress(i+1)
 	#	time.sleep(0.6)
-
-

@@ -35,11 +35,16 @@ def predict(image_path, save_path):
     # predict
     out = model(batch)
     _, preds = torch.max(out, 1) # gives us the final label
-    
+
     with torch.no_grad(): # gives us a probability
         prob = nn.functional.softmax(out, dim=1)[0] * 100
 
-    # define map 
+    # define map
     m = {0: 'COVID-19 Negativo', 1: 'COVID-19 Positivo'}
 
     return (m[preds.item()], prob[preds.item()].item())
+
+ def dummy(n):
+     for i in range(n):
+         print("oi eu sou uma função importada")
+    return 0
