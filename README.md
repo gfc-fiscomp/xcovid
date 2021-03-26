@@ -1,4 +1,4 @@
-# **xcovid**
+# **XCOVID**
 
 In this project we created a transfer learning based COVID-19 lung x-ray classifier WebApp for the [Scitek - POATEK Datathon](https://poatek.com/scitek/)!
 
