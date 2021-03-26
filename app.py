@@ -45,7 +45,7 @@ def main():
 		bot = st.button("Enviar")
 		if fueto is not None:
 			image = Image.open(fueto)
-			st.image(image, caption="Arquivo enviado", use_column_width=True)
+			st.image(image, caption="Arquivo enviado", use_column_width=True, width=300)
 			st.write("")
 			st.write("Classificando...")
 			latest_it = st.empty()
@@ -53,19 +53,12 @@ def main():
 			for i in range(100):
 				latest_it.text(f'Etapa {i+1}/100')
 				bar.progress(i+1)
-				time.sleep(0.05)
-			x = st.number_input("Digite aqui:", -1,1)
-			x2 = predict(fueto)[0]
-			if x == -1:
-				st.markdown("**Calculando**")
-			elif x == 0:
-				st.success("COVID-19 Negativo")
+				time.sleep(0.1)
+			x = predict(fueto, "model.pt")[0]
+			if x == 0:
+				st.success("COVID-19 Negativo, com {}% de acuracia".format(x[1]))
 			else:
-				st.warning("COVID-19 Positivo")
-
-			y = dummy(4)
-			if y == 0:
-				st.write("A função devolveu 0")
+				st.warning("COVID-19 Positivo, com {}% de acuracia".format(x[1]))
 
 
 
