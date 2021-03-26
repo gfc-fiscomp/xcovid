@@ -21,7 +21,7 @@ def load_model(model_path):
 
 def predict(image_path, save_path):
     # load image
-    img = Image.open(image_path)
+    img = Image.open(image_path).convert('RGB')
 
     # define transforms
     t = transforms.Compose([transforms.ToTensor(), transforms.Resize(224), transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
@@ -34,13 +34,12 @@ def predict(image_path, save_path):
 
     # predict
     out = model(batch)
+    _, preds = torch.max(out, 1) # gives us the final label
+    
+    with torch.no_grad(): # gives us a probability
+        prob = nn.functional.softmax(out, dim=1)[0] * 100
 
     # define map 
     m = {0: 'COVID-19 Negativo', 1: 'COVID-19 Positivo'}
 
-    prob = nn.functional.softmax(out, dim=1)[0] * 100
-    _, indices = torch.sort(out, descending=True)    
-
-    return [m[i], prob[i].item() for i in indices[0]]
-
-
+    return (m[preds.item()], prob[preds.item()].item())
