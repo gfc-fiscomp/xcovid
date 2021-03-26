@@ -55,10 +55,8 @@ def main():
 				bar.progress(i+1)
 				time.sleep(0.1)
 			x = predict(fueto, "model.pt")[0]
-			if x == 0:
-				st.success("COVID-19 Negativo, com {}% de acuracia".format(x[1]))
-			else:
-				st.warning("COVID-19 Positivo, com {}% de acuracia".format(x[1]))
+			st.text(x[0], x[1])
+
 
 
 
