@@ -42,7 +42,6 @@ def main():
 		st.title("Classificação de imagens usando Redes Neurais Convolucionais")
 		st.header("Diagnóstico de COVID a partir de Raio-X pulmonar")
 		fueto = st.file_uploader("Envie aqui o raio-x:", type=["jpg", "png"])
-		bot = st.button("Enviar")
 		if fueto is not None:
 			image = Image.open(fueto)
 			st.image(image, caption="Arquivo enviado", use_column_width=True, width=300)
@@ -54,8 +53,8 @@ def main():
 				latest_it.text(f'Etapa {i+1}/100')
 				bar.progress(i+1)
 				time.sleep(0.1)
-			x = predict(fueto, "model.pt")[0]
-			st.text(x[0], x[1])
+			x = predict(fueto, "model.pt")
+			st.subheader(x)
 
 
 
