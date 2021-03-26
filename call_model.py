@@ -24,7 +24,7 @@ def predict(image_path, save_path):
     img = Image.open(image_path).convert('RGB')
 
     # define transforms
-    t = transforms.Compose([transforms.ToTensor(), transforms.Resize(224), transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
+    t = transforms.Compose([transforms.Resize(224), transforms.ToTensor(), transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
 
     # apply transforms and turn image into batch
     batch = torch.unsqueeze(t(img), 0)
